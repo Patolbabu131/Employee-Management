@@ -1,0 +1,69 @@
+﻿@model WebApplication9.Models.Salary
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<h4>Salary</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="View">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Emp_No" class="control-label"></label>
+                <select asp-for="Emp_No" class ="form-control" asp-items="ViewBag.Emp_No"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Basic" class="control-label"></label>
+                <input asp-for="Basic" class="form-control" />
+                <span asp-validation-for="Basic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DA" class="control-label"></label>
+                <input asp-for="DA" class="form-control" />
+                <span asp-validation-for="DA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HRA" class="control-label"></label>
+                <input asp-for="HRA" class="form-control" />
+                <span asp-validation-for="HRA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FA" class="control-label"></label>
+                <input asp-for="FA" class="form-control" />
+                <span asp-validation-for="FA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ME" class="control-label"></label>
+                <input asp-for="ME" class="form-control" />
+                <span asp-validation-for="ME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SM" class="control-label"></label>
+                <input asp-for="SM" class="form-control" />
+                <span asp-validation-for="SM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SY" class="control-label"></label>
+                <input asp-for="SY" class="form-control" />
+                <span asp-validation-for="SY" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="month_year" class="control-label"></label>
+                <input asp-for="month_year" class="form-control" />
+                <span asp-validation-for="month_year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,164 @@
+﻿@model IEnumerable<WebApplication9.Models.Employee>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <link href="~/css/site.css" rel="stylesheet">
+   
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js" integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+</head>
+<body>
+
+    
+    <button type="button" class="button4" onclick="partial()"><h4>Add Employee</h4></button>
+    <div id="CreateContainer"></div>
+
+    <table id="customers">
+        
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Date Of Birth</th>
+            <th>Date Of Join</th>
+            <th>Contact No</th>
+            <th>Action</th>
+            <th>Salary</th>
+        </tr>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>@obj.Emp_No</td>
+                 <td>
+                    <a href="#" data-bs-toggle="tooltip" title="Click on Name to Edit"  style="text-decoration:none; color: black" onclick="Emp_Edit(@obj.Emp_No)">@obj.name</a>
+                </td>
+                <td>@obj.gender</td>
+                <td>@Html.DisplayFor(modelitem => obj.DOB)</td>
+                <td>@Html.DisplayFor(modelitem => obj.DOJ)</td>
+                <td>@Html.DisplayFor(modelItem => obj.Contact_No)</td>
+                <td>
+                    <button type="button" class="button2"  onclick="sal_details(@obj.Emp_No)">Salary Details</button> |
+                    <input type="submit" onclick="DeleteCall(@obj.Emp_No)" value="Delete" class="button3" >
+                </td>
+                <td>
+                    <input type="submit" onclick="Add_Salary(@obj.Emp_No)" value="Add Salary" class="button2">
+                </td>
+            </tr>
+        }
+    </table>
+
+   
+      
+    <script>
+        function Emp_Edit(id) {
+            $.ajax({
+                type: "get",
+                url: '/Employee/EditPartial/?id=' + id,
+                success: function (employee) {
+                    $('#CreateContainer').html(employee);
+                    $("#Editpars").modal('show');
+
+                }
+            })
+        }
+        
+        function DeleteCall(id){
+            var confirmation = confirm("Are you sure to delete this Employee...");
+            if (confirmation) {
+                $.ajax({
+                    url:'/Employee/Delete/?id='+id,
+                    success:function(result){
+                        alert("Record Deleted Successfuly..");
+                          window.location.reload();
+                    },
+                    error: function (error) {
+                        alert('error; ' + eval(error));
+                     }
+                })
+            }
+        }
+      
+
+        var Details = function (id) {
+            $.ajax({
+                type: "post",
+                url: "/Employee/Details/" + id,
+                success: function (partialViewData2) { 
+                    $('#EmpContainer').html(partialViewData2);
+                    $("#partialDetails").modal('show');
+                }
+            })
+        }
+
+    
+
+        var Edit =function() {
+            $.ajax({
+                type:"post",
+                url: "/Employee/Edit/",
+                success: function (partialViewData3) {
+                    $('#ShowEmployeeData').html(partialViewData3);
+                    $("#EditPartial").modal('show');
+                }
+            })
+        }
+        
+        var partial = function () {
+            $.ajax({
+                type: "post",
+                url: "/Employee/partial/",
+                success: function (response) {
+                    $('#datenow').val(response);
+                    $('#CreateContainer').html(response);
+                    $("#partialModal").modal('show');
+                }
+            })
+        }
+
+        var Add_Salary=function(id){
+            $.ajax({
+                type:"get",
+                url: "/salaries/Create1/?id=" + id,
+                success: function (partialViewData) {
+                    $('#CreateContainer').html(partialViewData);
+                    $("#Add_Salary").modal('show');
+                    $('#liWithID').val(id);                    
+                }
+            })
+        }
+        var sal_details = function (id) {
+            $.ajax({
+                url: "/salaries/Details/"+id,
+                success: function (partialViewData3) {
+                    $('#CreateContainer').html(partialViewData3);
+                    $("#SalPartial").modal('show');
+                }
+            })
+        }
+
+        function getDate() {
+            var today = new Date();
+
+            document.getElementById("date").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+
+
+        }
+
+        $(function(){
+            $("#date_now").datepicker( );
+        })
+
+
+
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+﻿
+@using WebApplication9;
+@model dynamic
+@{
+    ViewBag.Title = "Details"; 
+}
+
+
+<div id="SalPartial" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg   ">
+        <div class="modal-content">
+            <div class="modal-header">
+                        @foreach (Employee employee in Model.Employees)
+                        {
+                              <center> <h4>@Html.DisplayFor(modelItem => employee.name)</h4></center>
+                        }
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                
+                 <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Emp_No</th>
+                                    <th> Basic</th>
+                                    <th> Dearness Allowance</th>
+                                    <th>House Rent Allowance </th>
+                                    <th> Food Allowance</th>
+                                    <th>Misc Expense </th>
+                                    <th>Salary per Month </th>
+                                    <th> Salary per Year</th>
+                                    <th>Month & Year</th>
+                            
+                               
+                                </tr>
+                            </thead>
+                            <tbody>
+                                           @foreach (Salary salary in Model.Salaries){
+                                          <tr>
+                                                    <td>
+                                                         @Html.DisplayFor(modelItem => salary.Emp_No)
+                                                    </td>
+                                                    <td>
+                                                         @Html.DisplayFor(modelItem => salary.Basic)
+                                                    </td>
+                                                    <td>
+                                                         @Html.DisplayFor(modelItem => salary.DA)
+                                                    </td>
+                                                    <td>
+                                                          @Html.DisplayFor(modelItem => salary.HRA)
+                                                    </td>
+                                                    <td>
+                                                          @Html.DisplayFor(modelItem => salary.FA)
+                                                    </td>
+                                                    <td>
+                                                          @Html.DisplayFor(modelItem => salary.ME)
+                                                    </td>
+                                                    <td>
+                                                             @Html.DisplayFor(modelItem => salary.SM)
+                                                    </td>
+                                                    <td>
+                                                           @Html.DisplayFor(modelItem => salary.SY)
+                                                    </td>
+                                                    <td>
+                                    @Html.DisplayFor(modelItem => salary.month_year)
+                                                    </td>
+                                               
+                                                
+                                          </tr>
+                                    }
+                            </tbody>
+                     </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,75 @@
+﻿@model WebApplication9.Models.Salary
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Salary</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.id.Emp_No)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Basic)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Basic)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DA)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DA)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HRA)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HRA)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FA)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FA)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ME)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ME)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SM)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SM)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SY)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SY)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.month_year)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.month_year)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Sal_Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<WebApplication9.Models.Salary>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<html>
+    <head>
+        <h1 hidden>jay shree ram</h1>
+    </head>
+    <body>
+    <h1>Index</h1>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Emp_id
+                </th>
+                <th>
+                    id
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Basic)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DA)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HRA)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FA)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SM)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SY)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.month_year)
+                </th>
+        
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item .Emp_No)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sal_Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Basic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HRA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SY)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.month_year)
+                    </td>
+                 
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Sal_Id">Edit</a> |
+
+                        <button type="button" onclick="sal_details1(@item.Emp_No)">Salary Details</button>|
+                        <a asp-action="Create" asp-route-id="@item.Sal_Id">Create</a>
+                        <a asp-action="Delete" asp-route-id="@item.Sal_Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    </body>
+</html>
+
+
