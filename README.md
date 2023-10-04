@@ -13,7 +13,7 @@ Attendance management module helps in monitoring employee attendance, leaves, an
 ![image](https://github.com/Patolbabu131/Employee-management-/assets/97328289/39846540-41fc-4b62-b04f-53ee4e7246c9)
 # 5. Add Salary details with employee name at the top
 ![image](https://github.com/Patolbabu131/Employee-management-/assets/97328289/34f34ef8-cc34-4e97-82c0-d2095718931b)
-# 6. Salary history of a particular Employee
+# 6. Monthly Salary history of a particular Employee
 ![image](https://github.com/Patolbabu131/Employee-management-/assets/97328289/d99bb8d6-cea7-4675-826d-d972e814dab3)
 
 
